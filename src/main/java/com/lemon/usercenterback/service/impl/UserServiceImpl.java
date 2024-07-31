@@ -72,7 +72,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         }
 
         //账户不能重复，放到最后一步，因为涉及到操作数据库
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
         queryWrapper.eq("userAccount",userAccount);
         Long count = userMapper.selectCount(queryWrapper);
         if (count > 0){
@@ -124,7 +124,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
         //2、校验密码是否输入正确，要和数据库中的密文密码对比
         String encryptPassword = DigestUtils.md5DigestAsHex((SALT + userPassword).getBytes());
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        QueryWrapper<User> queryWrapper = new QueryWrapper<User>();
         queryWrapper.eq("userAccount",userAccount);
         queryWrapper.eq("userPassword",encryptPassword);
         User user = userMapper.selectOne(queryWrapper);

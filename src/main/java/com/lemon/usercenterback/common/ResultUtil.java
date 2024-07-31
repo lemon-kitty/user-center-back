@@ -12,7 +12,7 @@ public class ResultUtil<T> {
      * @param <T>
      */
     public static <T> BaseResponse<T> success(T data){
-        return new BaseResponse<>(0,data,"ok");
+        return new BaseResponse<T>(0,data,"ok");
     }
 
     /**
